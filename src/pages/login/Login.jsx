@@ -24,7 +24,6 @@ const Login = () => {
             setIsLoading(false);
             return;
         }
-
         try {
             const response = await axios.post(
                 "http://localhost:8081/auth/login",
@@ -36,10 +35,8 @@ const Login = () => {
                 }
             );
 
-            console.log("Response:", response.data); // Debug response
-
             // data token
-            localStorage.setItem("token", response.data.token || response.data.accessToken);
+            localStorage.setItem("jwt", response.data.token || response.data.accessToken);
             localStorage.setItem("user", JSON.stringify({
                 username: response.data.username,
                 role: response.data.role

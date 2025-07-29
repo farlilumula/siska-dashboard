@@ -91,6 +91,10 @@ const Sidebar = ({ darkMode }) => {
                 {isOpen ? <LuChevronsLeft /> : <LuChevronsRight />}
             </button>
 
+            {/*<div className="text-gray-400 justify-start p-2 ml-5">*/}
+            {/*    <h1>Dashboard</h1>*/}
+            {/*</div>*/}
+
             <nav className="mt-2">
                 {menuItems.map((item, index) => (
                     <div key={item.path || item.name}>
