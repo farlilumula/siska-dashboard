@@ -14,15 +14,8 @@ import ListAsset from "./pages/ListAsset.jsx";
 import CreateTicket from "./pages/ticket/CreateTicket.jsx";
 import Login from "./pages/login/Login";
 import MainLayout from "@/layout/MainLayout.jsx";
-import {ThemeProvider} from "next-themes";
-
 
 function App() {
-    const [darkMode, setDarkMode] = useState(false);
-
-    const location = useLocation();
-    const isLoginPage = location.pathname.toLowerCase() === "/login";
-
 
     return (
             <Routes>
