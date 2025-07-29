@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/solid";
 
 const StatusCard = ({ title, value, icon, iconBg }) => (
-    <div className="flex items-center justify-between p-4 bg-white rounded shadow-lg">
+    <div className="flex items-center justify-between p-4 bg-white rounded shadow-lg dark:bg-gray-800">
         <div>
             <h4 className="text-xl font-semibold text-gray-700">{value}</h4>
             <p className="text-sm text-gray-500">{title}</p>

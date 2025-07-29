@@ -10,6 +10,7 @@ import {
 import {SlashIcon} from "lucide-react";
 import {Link, useLocation} from "react-router";
 import {Fragment} from "react";
+import {ModeToggle} from "@/components/mode-toggle.jsx";
 
 export function SiteHeader() {
     const location = useLocation();
@@ -35,7 +36,7 @@ export function SiteHeader() {
                     <BreadcrumbList>
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild>
-                                <Link to="/dashboard">Dashboard</Link>
+                                <Link to="/Home">Home</Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
                         {breadcrumbItems.map((item, index) => (
@@ -52,6 +53,9 @@ export function SiteHeader() {
                         ))}
                     </BreadcrumbList>
                 </Breadcrumb>
+            </div>
+            <div className="pe-4">
+                <ModeToggle/>
             </div>
         </header>
     );

@@ -1,23 +1,4 @@
 import * as React from "react"
-import {
-  IconCamera,
-  IconChartBar,
-  IconDashboard,
-  IconDatabase,
-  IconFileAi,
-  IconFileDescription,
-  IconFileWord,
-  IconFolder,
-  IconHelp,
-  IconInnerShadowTop,
-  IconListDetails,
-  IconReport,
-  IconSearch,
-  IconSettings,
-  IconUsers,
-} from "@tabler/icons-react"
-
-import { NavDocuments } from "@/components/nav-documents"
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
 import { NavUser } from "@/components/nav-user"
@@ -33,8 +14,16 @@ import {
 import {useContext} from "react";
 import {AppContext} from "@/context/app-context";
 import {assets} from "@/assets/assets";
-import {CreditCard} from "lucide-react";
-import {HiCube} from "react-icons/hi";
+import {
+  Binoculars,
+  Cog,
+  CreditCard,
+  FileCheck,
+  LayoutDashboard,
+  MessageCircleQuestionMark,
+  TriangleAlert,
+  Warehouse
+} from "lucide-react";
 import {DocumentTextIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline/index.js";
 
 export function AppSidebar({
@@ -52,7 +41,7 @@ export function AppSidebar({
       {
         title: "Dashboard",
         url: "/Home",
-        icon: IconDashboard,
+        icon: LayoutDashboard,
       },
       {
         title: "Tickets",
@@ -72,7 +61,7 @@ export function AppSidebar({
       {
         title: "Laporan",
         url: "/Report",
-        icon: DocumentTextIcon,
+        icon: FileCheck,
         items: [
           {
             title: "Laporan Tiket",
@@ -87,29 +76,29 @@ export function AppSidebar({
       {
         title: "Assets",
         url: "/AssetManagement",
-        icon: HiCube,
+        icon: Warehouse,
       },
       {
         title: "FAQs",
         url: "/Faqs",
-        icon: ExclamationCircleIcon,
+        icon: TriangleAlert,
       }
     ],
     navSecondary: [
       {
         title: "Settings",
         url: "#",
-        icon: IconSettings,
+        icon: Cog,
       },
       {
         title: "Get Help",
         url: "#",
-        icon: IconHelp,
+        icon: MessageCircleQuestionMark,
       },
       {
         title: "Search",
         url: "#",
-        icon: IconSearch,
+        icon: Binoculars,
       },
     ],
   }
@@ -131,7 +120,6 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        {/*<NavDocuments items={data.documents} />*/}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
