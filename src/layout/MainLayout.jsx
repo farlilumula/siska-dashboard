@@ -1,18 +1,27 @@
 import React from "react";
-import Sidebar from "../components/Sidebar.jsx";
-import Navbar from "../components/Navbar.jsx";
+import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar.jsx";
+import {AppSidebar} from "@/components/app-sidebar.jsx";
+import {SiteHeader} from "@/components/site-header.jsx";
+import Navbar from "@/components/Navbar.jsx";
+import {Outlet} from "react-router-dom";
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
     return (
-        <div className="flex h-screen bg-gray-100">
-            <Sidebar />
-            <div className="flex flex-col flex-1">
-                <Navbar />
+        <SidebarProvider
+            style={{
+                "--sidebar-width": "calc(var(--spacing) * 72)",
+                "--header-height": "calc(var(--spacing) * 12)",
+            }}
+        >
+            <AppSidebar variant="inset" collapsible="icon"/>
+            <SidebarInset>
+                <SiteHeader/>
+                {/*<Navbar/>*/}
                 <main className="p-4 overflow-y-auto">
-                    {children}
+                    <Outlet/>
                 </main>
-            </div>
-        </div>
+            </SidebarInset>
+        </SidebarProvider>
     );
 };
 
