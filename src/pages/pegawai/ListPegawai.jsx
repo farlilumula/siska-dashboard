@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FiMoreVertical, FiEdit, FiTrash } from "react-icons/fi";
 import ModalEditPegawai from "./ModalEditPegawai";
 import ModalTambahPegawai from "./ModalTambahPegawai.jsx";
+import InfoModal from "@/components/InfoModal";
 
 const dataPegawaiAwal = [
   {
@@ -31,23 +32,30 @@ export default function ListPegawai() {
     nama_pegawai: "",
     no_hp: "",
     bm_combined:"",
-    outlet_combined:""
+    outlet_combined: ""
   });
 
   // Edit
   const [isEditOpen, setEditOpen] = useState(false);
-  const [editForm, setEditForm] = useState(null); // { ...pegawai }
+  const [editForm, setEditForm] = useState(null);
+
+  // Modal Info (setelah delete)
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [infoMsg, setInfoMsg] = useState("");
+  const [infoVariant, setInfoVariant] = useState("success");
 
   const handleDelete = (id) => {
-    if (confirm("Yakin ingin menghapus pegawai ini?")) {
-      setData((prev) => prev.filter((item) => item.id !== id));
-      // tutup menu aksi
-      setShowMenuId(null);
-    }
+    // hapus data langsung (tanpa konfirmasi)
+    setData((prev) => prev.filter((row) => row.id !== id));
+    setShowMenuId(null);
+
+    // tampilkan modal info
+    setInfoVariant("success");
+    setInfoMsg("Berhasil dihapus.");
+    setInfoOpen(true);
   };
 
   const openEditModal = (pegawai) => {
-    // Pre-fill form dari data tabel → mapping key agar sesuai dengan ModalEdit
     setEditForm({
       id: pegawai.id,
       kodeNPP: pegawai.kodeNPP,
@@ -59,7 +67,7 @@ export default function ListPegawai() {
       noHp: pegawai.noHp,
     });
     setEditOpen(true);
-    setShowMenuId(null); // tutup dropdown saat modal dibuka
+    setShowMenuId(null);
   };
 
   const handleUpdatePegawai = (updatedPegawai) => {
@@ -71,7 +79,6 @@ export default function ListPegawai() {
   };
 
   const handleCreatePegawai = () => {
-    // mapping form tambah → data baris
     const newRow = {
       id: Date.now(),
       kodeNPP: addForm.kode_npp,
@@ -82,7 +89,6 @@ export default function ListPegawai() {
       namaPegawai: addForm.nama_pegawai,
       noHp: addForm.no_hp,
     };
-
     setData((prev) => [newRow, ...prev]);
     setAddOpen(false);
     setAddForm({
@@ -107,7 +113,7 @@ export default function ListPegawai() {
           + Add
         </button>
 
-        <div className="overflow-auto">
+        <div className="overflow-auto h-screen">
           <table className="min-w-full table-auto border border-gray-300 text-sm">
             <thead className="bg-gray-100">
             <tr>
@@ -130,6 +136,7 @@ export default function ListPegawai() {
                               setShowMenuId(showMenuId === pegawai.id ? null : pegawai.id)
                           }
                           className="text-blue-600 hover:text-blue-800 focus:outline-none"
+                          title="Menu aksi"
                       >
                         <FiMoreVertical />
                       </button>
@@ -185,6 +192,17 @@ export default function ListPegawai() {
             onSubmit={handleCreatePegawai}
             formData={addForm}
             setFormData={setAddForm}
+        />
+
+        {/* Modal Info (setelah delete) */}
+        <InfoModal
+            isOpen={infoOpen}
+            onClose={() => setInfoOpen(false)}
+            title="Status"
+            message={infoMsg || "Berhasil dihapus."}
+            variant={infoVariant}     // "success" default
+            okText="OK"
+            showClose={true}
         />
       </div>
   );
