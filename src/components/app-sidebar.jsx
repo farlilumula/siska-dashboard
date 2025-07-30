@@ -65,6 +65,7 @@ export function AppSidebar({
         items: [
           {
             title: "Laporan Tiket",
+            icon: FileCheck,
             url: "/Report",
           },
           {
@@ -72,6 +73,11 @@ export function AppSidebar({
             url: "/Analytics",
           }
         ]
+      },
+      {
+        title: "Master Pegawai",
+        url: "/ListPegawai",
+        icon: Warehouse,
       },
       {
         title: "Assets",

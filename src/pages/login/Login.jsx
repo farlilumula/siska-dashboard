@@ -31,7 +31,7 @@ const Login = () => {
             });
 
             // data token
-            localStorage.setItem("jwt", response.data.token || response.data.accessToken);
+            localStorage.setItem("token", response.data.token || response.data.accessToken);
             localStorage.setItem("user", JSON.stringify({
                 username: response.data.username, role: response.data.role
             }));

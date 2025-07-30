@@ -7,7 +7,7 @@ import Ticket from "./pages/ticket/Ticket.jsx";
 import Allticket from "./pages/ticket/Allticket.jsx";
 import Report from "./pages/Report.jsx";
 import Analytics from "./pages/Analytics.jsx";
-import ListPegawai from "./pages/ListPegawai.jsx";
+import ListPegawai from "./pages/pegawai/ListPegawai.jsx";
 import AssetManagement from "./pages/AssetManagement.jsx";
 import Faqs from "./pages/Faqs.jsx";
 import ListAsset from "./pages/ListAsset.jsx";
