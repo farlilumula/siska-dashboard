@@ -62,7 +62,7 @@ const dataTiket = [
 ];
 
 // ======== Modal View sederhana ========
-function ViewTicketModal({ isOpen, onClose, data }) {
+function ViewTicketModal({ isOpen, onClose}) {
     if (!isOpen) return null;
 
     // Tutup ESC
@@ -75,7 +75,7 @@ function ViewTicketModal({ isOpen, onClose, data }) {
 }
 
 export default function Ticket() {
-    const [showMenuNo, setShowMenuNo] = useState(null); // simpan nomor tiket untuk dropdown yang terbuka
+    const [showMenuNo, setShowMenuNo] = useState(null);
     const [isViewOpen, setViewOpen] = useState(false);
     const [viewData, setViewData] = useState(null);
 
@@ -140,86 +140,87 @@ export default function Ticket() {
                 <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
             </div>
 
-            <div className="overflow-x-auto">
-                <table className="min-w-[1000px] border border-gray-200 text-sm">
-                    <thead className="bg-gray-100 text-gray-700">
-                    <tr>
-                        <th className="px-4 py-2 border">No Tiket</th>
-                        <th className="px-4 py-2 border">Aksi</th>
-                        <th className="px-4 py-2 border">Last Status</th>
-                        <th className="px-4 py-2 border">Konfirmasi</th>
-                        <th className="px-4 py-2 border">Nama BM</th>
-                        <th className="px-4 py-2 border">Outlet</th>
-                        <th className="px-4 py-2 border">Kategori</th>
-                        <th className="px-4 py-2 border">Status</th>
-                        <th className="px-4 py-2 border">Rangkuman</th>
-                        <th className="px-4 py-2 border">Tanggal Ticket</th>
-                        <th className="px-4 py-2 border">Assign SU</th>
-                        <th className="px-4 py-2 border">Assign Helpdesk</th>
-                        <th className="px-4 py-2 border">Assign Group</th>
-                        <th className="px-4 py-2 border">Prioritas</th>
-                    </tr>
-                    </thead>
+            <div className="w-full overflow-x-auto rounded shadow">
+                    <table className="min-w-[900px] border border-gray-200 text-sm">
+                        <thead className="bg-gray-100 text-gray-700">
+                        <tr>
+                            <th className="px-4 py-2 border">No Tiket</th>
+                            <th className="px-4 py-2 border">Aksi</th>
+                            <th className="px-4 py-2 border">Last Status</th>
+                            <th className="px-4 py-2 border">Konfirmasi</th>
+                            <th className="px-4 py-2 border">Nama BM</th>
+                            <th className="px-4 py-2 border">Outlet</th>
+                            <th className="px-4 py-2 border">Kategori</th>
+                            <th className="px-4 py-2 border">Status</th>
+                            <th className="px-4 py-2 border">Rangkuman</th>
+                            <th className="px-4 py-2 border">Tanggal Ticket</th>
+                            <th className="px-4 py-2 border">Assign SU</th>
+                            <th className="px-4 py-2 border">Assign Helpdesk</th>
+                            <th className="px-4 py-2 border">Assign Group</th>
+                            <th className="px-4 py-2 border">Prioritas</th>
+                        </tr>
+                        </thead>
 
-                    <tbody>
-                    {filteredData.map((item) => (
-                        <tr key={item.no} className="hover:bg-gray-100">
-                            <td className="border px-4 py-2 whitespace-nowrap">{item.no}</td>
+                        <tbody>
+                        {filteredData.map((item) => (
+                            <tr key={item.no} className="hover:bg-gray-100">
+                                <td className="border px-4 py-2 whitespace-nowrap">{item.no}</td>
 
-                            {/* Aksi + Dropdown (harus di dalam td yang sama, dan wrapper relative) */}
-                            <td className="border px-4 py-2 text-center">
-                                <div className="relative inline-block">
-                                    <button
-                                        onClick={() =>
-                                            setShowMenuNo(showMenuNo === item.no ? null : item.no)
-                                        }
-                                        className="bg-blue-600 hover:bg-blue-500 px-2 py-1 rounded text-xs text-white"
-                                        title="Menu aksi"
-                                    >
-                                        ...
-                                    </button>
+                                {/* Aksi + Dropdown (harus di dalam td yang sama, dan wrapper relative) */}
+                                <td className="border px-4 py-2 text-center">
+                                    <div className="relative inline-block">
+                                        <button
+                                            onClick={() =>
+                                                setShowMenuNo(showMenuNo === item.no ? null : item.no)
+                                            }
+                                            className="bg-blue-600 hover:bg-blue-500 px-2 py-1 rounded text-xs text-white"
+                                            title="Menu aksi"
+                                        >
+                                            ...
+                                        </button>
 
-                                    {showMenuNo === item.no && (
-                                        <div className="absolute right-0 mt-2 bg-white border rounded shadow z-50 w-32">
-                                            <button
-                                                onClick={() => handleView(item.no)}
-                                                className="w-full px-4 py-2 text-sm text-left hover:bg-gray-100 flex items-center gap-2"
-                                            >
-                                                <GrFormView /> View
-                                            </button>
-                                            {/* Tambah item lain di sini bila perlu */}
-                                        </div>
-                                    )}
-                                </div>
-                            </td>
+                                        {showMenuNo === item.no && (
+                                            <div className="absolute right-0 mt-2 bg-white border rounded shadow z-50 w-32">
+                                                <button
+                                                    onClick={() => handleView(item.no)}
+                                                    className="w-full px-4 py-2 text-sm text-left hover:bg-gray-100 flex items-center gap-2"
+                                                >
+                                                    <GrFormView /> View
+                                                </button>
+                                                {/* Tambah item lain di sini bila perlu */}
+                                            </div>
+                                        )}
+                                    </div>
+                                </td>
 
-                            <td className="border px-4 py-2 whitespace-nowrap">{item.lastStatus}</td>
-                            <td className="border px-4 py-2 text-blue-500 underline text-xs break-all">
-                                {item.konfirmasi || "-"}
-                            </td>
-                            <td className="border px-4 py-2">{item.bm}</td>
-                            <td className="border px-4 py-2">{item.outlet}</td>
-                            <td className="border px-4 py-2">{item.kategori}</td>
+                                <td className="border px-4 py-2 whitespace-nowrap">{item.lastStatus}</td>
+                                <td className="border px-4 py-2 text-blue-500 underline text-xs break-all">
+                                    {item.konfirmasi || "-"}
+                                </td>
+                                <td className="border px-4 py-2">{item.bm}</td>
+                                <td className="border px-4 py-2">{item.outlet}</td>
+                                <td className="border px-4 py-2">{item.kategori}</td>
 
-                            <td className="border px-4 py-2">
+                                <td className="border px-4 py-2">
                   <span
                       className={`text-white text-xs px-2 py-1 rounded whitespace-nowrap ${item.statusColor}`}
                   >
                     {item.status}
                   </span>
-                            </td>
+                                </td>
 
-                            <td className="border px-4 py-2 whitespace-nowrap">{item.rangkuman}</td>
-                            <td className="border px-4 py-2 whitespace-nowrap"></td>
-                            <td className="border px-4 py-2 whitespace-nowrap"></td>
-                            <td className="border px-4 py-2 whitespace-nowrap"></td>
-                            <td className="border px-4 py-2 whitespace-nowrap"></td>
-                            <td className="border px-4 py-2 whitespace-nowrap"></td>
-                        </tr>
-                    ))}
-                    </tbody>
-                </table>
+                                <td className="border px-4 py-2 whitespace-nowrap">{item.rangkuman}</td>
+                                <td className="border px-4 py-2 whitespace-nowrap"></td>
+                                <td className="border px-4 py-2 whitespace-nowrap"></td>
+                                <td className="border px-4 py-2 whitespace-nowrap"></td>
+                                <td className="border px-4 py-2 whitespace-nowrap"></td>
+                                <td className="border px-4 py-2 whitespace-nowrap"></td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
             </div>
+
 
             {/* Pagination contoh */}
             <div className="mt-4 flex justify-end">

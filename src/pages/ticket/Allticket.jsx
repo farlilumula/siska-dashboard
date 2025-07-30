@@ -63,7 +63,7 @@ const dataTiket = [
 ];
 
 // ======== Modal View sederhana ========
-function ViewTicketModal({ isOpen, onClose, data }) {
+function ViewTicketModal({ isOpen, onClose }) {
     if (!isOpen) return null;
 
     // Tutup ESC
@@ -75,11 +75,11 @@ function ViewTicketModal({ isOpen, onClose, data }) {
 }
 
 export default function Allticket() {
-    const [showMenuNo, setShowMenuNo] = useState(null); // simpan nomor tiket untuk dropdown yang terbuka
+    const [showMenuNo, setShowMenuNo] = useState(null);
     const [isViewOpen, setViewOpen] = useState(false);
     const [viewData, setViewData] = useState(null);
 
-    const [filteredData, setFilteredData] = useState(dataTiket);
+    const [filteredData] = useState(dataTiket);
 
     const navigate = useNavigate();
 
@@ -95,29 +95,6 @@ export default function Allticket() {
         navigate(`/ticket/${encodeURIComponent(ticketNo)}`);
     };
 
-    const handleFilterChange = (filters) => {
-        let filtered = dataTiket;
-
-        if (filters.outlet?.length > 0) {
-            filtered = filtered.filter((item) =>
-                filters.outlet.includes(item.outlet)
-            );
-        }
-
-        if (filters.status?.length > 0) {
-            filtered = filtered.filter((item) =>
-                filters.status.includes(item.status)
-            );
-        }
-
-        if (filters.prioritas?.length > 0) {
-            filtered = filtered.filter((item) =>
-                filters.prioritas.includes(item.prioritas || "NORMAL")
-            );
-        }
-
-        setFilteredData(filtered);
-    };
 
     return (
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
@@ -139,7 +116,7 @@ export default function Allticket() {
                 <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="w-full overflow-x-auto rounded shadow">
                 <table className="min-w-[1000px] border border-gray-200 text-sm">
                     <thead className="bg-gray-100 text-gray-700">
                     <tr>

@@ -1,7 +1,4 @@
-import {BrowserRouter as Router, Routes, Route, useLocation, Navigate} from "react-router-dom";
-import {useState} from "react";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
+import {Routes, Route, Navigate} from "react-router-dom";
 import Home from "./pages/dashboard/Home.jsx";
 import Ticket from "./pages/ticket/Ticket.jsx";
 import Allticket from "./pages/ticket/Allticket.jsx";
@@ -15,6 +12,7 @@ import CreateTicket from "./pages/ticket/CreateTicket.jsx";
 import Login from "./pages/login/Login";
 import MainLayout from "@/layout/MainLayout.jsx";
 import PrivateRoute from "@/routes/PrivateRoute.jsx";
+import TicketDetail from "@/pages/ticket/TicketDetail.jsx";
 
 function App() {
 
@@ -34,6 +32,7 @@ function App() {
                 <Route path="/ticket/CreateTicket" element={<CreateTicket/>}/>
                 <Route path="/ticket/Allticket" element={<Allticket/>}/>
                 <Route path="/tiket/detail/{id}" element={<Ticket/>}/>
+                <Route path="/ticket/:no" element={<TicketDetail />} />
                 <Route path="/Report" element={<Report/>}/>
                 <Route path="/Analytics" element={<Analytics/>}/>
                 <Route path="/ListPegawai" element={<ListPegawai/>}/>
