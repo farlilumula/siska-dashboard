@@ -45,7 +45,6 @@ export default function ListPegawai() {
   const [infoVariant, setInfoVariant] = useState("success");
 
   const handleDelete = (id) => {
-    // hapus data langsung (tanpa konfirmasi)
     setData((prev) => prev.filter((row) => row.id !== id));
     setShowMenuId(null);
 
