@@ -1,13 +1,10 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom"
+import { isAuthenticated } from "../utils/auth"
 
-const PrivateRoute = () => {
-    const token = localStorage.getItem("token"); // Cek token
-
-    if (!token) {
-        return <Navigate to="/login" replace />; // Redirect ke login jika tidak ada token
+export default function PrivateRoute({ children }) {
+    if (!isAuthenticated()) {
+        return <Navigate to="/login" replace />
     }
 
-    return <Outlet />; // Lanjutkan ke route yang dilindungi
-};
-
-export default PrivateRoute;
+    return children
+}
