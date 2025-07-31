@@ -115,9 +115,9 @@ export function AppSidebar({
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-1.5">
-              <a href="#" className="flex items-center gap-2 self-center font-medium">
+              <a href="#" className="flex justify-center items-center gap-2 self-center font-medium">
                 <div className="flex items-center justify-center rounded-md">
-                  <img src={assets.logo} className="bg-cover" alt="logo"/>
+                  <img src={assets.logo} className="bg-cover h-9" alt="logo"/>
                 </div>
               </a>
             </SidebarMenuButton>

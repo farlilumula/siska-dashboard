@@ -3,6 +3,7 @@ import { FiMoreVertical, FiEdit, FiTrash } from "react-icons/fi";
 import ModalEditPegawai from "./ModalEditPegawai";
 import ModalTambahPegawai from "./ModalTambahPegawai.jsx";
 import InfoModal from "@/components/InfoModal";
+import {HiOutlineFolderAdd, HiOutlineFolderRemove} from "react-icons/hi";
 
 const dataPegawaiAwal = [
   {
@@ -32,7 +33,8 @@ export default function ListPegawai() {
     nama_pegawai: "",
     no_hp: "",
     bm_combined:"",
-    outlet_combined: ""
+    outlet_combined: "",
+    npp_combined: ""
   });
 
   // Edit
@@ -57,22 +59,33 @@ export default function ListPegawai() {
   const openEditModal = (pegawai) => {
     setEditForm({
       id: pegawai.id,
-      kodeNPP: pegawai.kodeNPP,
-      kodeBM: pegawai.kodeBM,
-      namaBM: pegawai.namaBM,
-      kodeOutlet: pegawai.kodeOutlet,
-      namaOutlet: pegawai.namaOutlet,
-      namaPegawai: pegawai.namaPegawai,
-      noHp: pegawai.noHp,
+      kode_npp: pegawai.kodeNPP,
+      nama_pegawai: pegawai.namaPegawai,
+      kode_bm: pegawai.kodeBM,
+      nama_bm: pegawai.namaBM,
+      kode_outlet: pegawai.kodeOutlet,
+      nama_outlet: pegawai.namaOutlet,
+      no_hp: pegawai.noHp,
+      bm_combined: `${pegawai.kodeBM}|${pegawai.namaBM}`,
+      outlet_combined: `${pegawai.kodeOutlet}|${pegawai.namaOutlet}`,
+      npp_combined: `${pegawai.kodeNPP}|${pegawai.namaPegawai}`,
     });
     setEditOpen(true);
     setShowMenuId(null);
   };
 
   const handleUpdatePegawai = (updatedPegawai) => {
-    setData((prev) =>
-        prev.map((item) => (item.id === updatedPegawai.id ? updatedPegawai : item))
-    );
+    const formatted = {
+      id: updatedPegawai.id,
+      kodeNPP: updatedPegawai.kode_npp,
+      kodeBM: updatedPegawai.kode_bm,
+      namaBM: updatedPegawai.nama_bm,
+      kodeOutlet: updatedPegawai.kode_outlet,
+      namaOutlet: updatedPegawai.nama_outlet,
+      namaPegawai: updatedPegawai.nama_pegawai,
+      noHp: updatedPegawai.no_hp,
+    };
+    setData((prev) => prev.map((item) => item.id === formatted.id ? formatted : item));
     setEditOpen(false);
     setEditForm(null);
   };
@@ -130,15 +143,23 @@ export default function ListPegawai() {
                 <tr key={pegawai.id} className="hover:bg-gray-50">
                   <td className="border px-3 py-2 relative">
                     <div className="flex items-center gap-2">
-                      <button
-                          onClick={() =>
-                              setShowMenuId(showMenuId === pegawai.id ? null : pegawai.id)
-                          }
-                          className="text-blue-600 hover:text-blue-800 focus:outline-none"
-                          title="Menu aksi"
-                      >
-                        <FiMoreVertical />
-                      </button>
+                      {showMenuId === pegawai.id ? (
+                          <button
+                              onClick={() => setShowMenuId(null)}
+                              className="text-red-600 hover:text-red-800 focus:outline-none"
+                              title="Tutup menu aksi"
+                          >
+                            <HiOutlineFolderRemove className="size-5"/>
+                          </button>
+                      ) : (
+                          <button
+                              onClick={() => setShowMenuId(pegawai.id)}
+                              className="text-green-600 hover:text-green-800 focus:outline-none"
+                              title="Buka menu aksi"
+                          >
+                            <HiOutlineFolderAdd className="size-5"/>
+                          </button>
+                      )}
                       {pegawai.kodeNPP}
                     </div>
 

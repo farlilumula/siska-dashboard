@@ -23,11 +23,23 @@ export default function ModalEditPegawai({
     };
 
     // tutup ESC
+    // useEffect(() => {
+    //     const onEsc = (e) => e.key === "Escape" && onClose();
+    //     window.addEventListener("keydown", onEsc);
+    //     return () => window.removeEventListener("keydown", onEsc);
+    // }, [onClose]);
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
-        const onEsc = (e) => e.key === "Escape" && onClose();
-        window.addEventListener("keydown", onEsc);
-        return () => window.removeEventListener("keydown", onEsc);
-    }, [onClose]);
+        if (formData) {
+            setFormData((prev) => ({
+                ...prev,
+                npp_combined: formData.kode_npp && formData.nama_pegawai ? `${formData.kode_npp}|${formData.nama_pegawai}` : "",
+                bm_combined: formData.kode_bm && formData.nama_bm ? `${formData.kode_bm}|${formData.nama_bm}` : "",
+                outlet_combined: formData.kode_outlet && formData.nama_outlet ? `${formData.kode_outlet}|${formData.nama_outlet}` : "",
+            }));
+        }
+    }, [formData?.id]);
 
     return (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50">
@@ -38,36 +50,37 @@ export default function ModalEditPegawai({
                 <h2 className="text-xl font-bold mb-4">Edit Pegawai</h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block font-medium">Nama Pegawai</label>
-                        <input
-                            type="text"
-                            name="nama_pegawai"
-                            value={formData?.nama_pegawai ?? ""}
-                            onChange={handleChange}
-                            className="w-full px-3 py-2 border border-gray-300 rounded"
-                        />
-                    </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label className="block font-medium mb-1">Kode NPP</label>
-                            <input
-                                type="text"
-                                name="kode_npp"
-                                value={formData?.kode_npp ?? ""}
-                                placeholder="Contoh pengisian: 19880518A"
-                                onChange={handleChange}
-                                className="w-full border border-gray-300 rounded px-3 py-2"
+                            <label className="block font-medium mb-1">Kode NPP & Nama Pegawai</label>
+                            <select
+                                name="bm_combined"
+                                value={formData.npp_combined || ""}
+                                onChange={(e) => {
+                                    const val = e.target.value;
+                                    const [kode, nama] = val.split("|");
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        npp_combined: val,
+                                        kode_npp: kode || "",
+                                        nama_pegawai: nama || "",
+                                    }));
+                                }}
+                                className="w-full px-3 py-2 border border-gray-300 rounded"
                                 required
-                            />
+                            >
+                                <option value="" disabled>Pilih Nama Pegawai</option>
+                                <option value="19970117B|EVA RIZKIA BAGI, S.Farm">19970117B - EVA RIZKIA BAGI, S.Farm</option>
+                                <option value="19880518A|FARLY C LUMULA">19880518A - FARLY C LUMULA</option>
+                            </select>
                         </div>
                         <div>
-                            <label className="block font-medium">No. HP</label>
+                            <label className="block font-medium">No HP</label>
                             <input
                                 type="text"
                                 name="no_hp"
                                 value={formData?.no_hp ?? ""}
-                                placeholder="Example: 082238353606"
+                                placeholder="contoh : 082238353606"
                                 onChange={handleChange}
                                 className="w-full px-3 py-2 border border-gray-300 rounded"
                             />
@@ -100,7 +113,7 @@ export default function ModalEditPegawai({
                             <label className="block font-medium">Kode Outlet & Nama Outlet</label>
                             <select
                                 name="outlet_combined"
-                                value={formData.bm_combined || ""}
+                                value={formData.outlet_combined || ""}
                                 onChange={(e) => {
                                     const val = e.target.value;
                                     const [kode, nama] = val.split("|");

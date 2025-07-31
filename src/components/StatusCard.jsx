@@ -8,10 +8,10 @@ import {
 } from "@heroicons/react/24/solid";
 
 const CardInfo = ({ title, value, icon, iconBg }) => (
-    <div className="flex items-center justify-between p-4 bg-white rounded shadow-lg dark:bg-gray-800">
+    <div className="flex items-center justify-between p-4 bg-white rounded shadow-lg dark:shadow-gray-700 dark:bg-gray-800">
         <div>
-            <h4 className="text-xl font-semibold text-gray-700">{value}</h4>
-            <p className="text-sm text-gray-500">{title}</p>
+            <h4 className="text-xl font-semibold dark:text-gray-400">{value}</h4>
+            <p className="text-sm dark:text-gray-400">{title}</p>
         </div>
         <div className={`p-2 rounded ${iconBg}`}>{icon}</div>
     </div>

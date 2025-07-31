@@ -135,7 +135,7 @@ export default function Ticket() {
             </div>
 
             <div className="mb-4 flex justify-between items-center">
-                <button className="bg-gray-100 px-4 py-2 rounded">Show 100 rows ▼</button>
+                <button className="bg-gray-100 px-4 py-2 rounded dark:bg-gray-700">Show 100 rows ▼</button>
                 <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
             </div>
 
@@ -162,7 +162,7 @@ export default function Ticket() {
 
                         <tbody>
                         {filteredData.map((item) => (
-                            <tr key={item.no} className="hover:bg-gray-100">
+                            <tr key={item.no} className="dark:hover:bg-gray-700 hover:bg-gray-300">
                                 <td className="border px-4 py-2 whitespace-nowrap">{item.no}</td>
 
                                 {/* Aksi + Dropdown (harus di dalam td yang sama, dan wrapper relative) */}
