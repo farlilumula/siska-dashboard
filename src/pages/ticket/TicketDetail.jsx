@@ -1,5 +1,11 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import Tabs from "@/components/Tabs.jsx";
+import TabRingkasan from "@/pages/ticket/tabs/TabRingkasan.jsx";
+import TabDiskusi from "@/pages/ticket/tabs/TabDiskusi.jsx";
+import TabFile from "@/pages/ticket/tabs/TabFile.jsx";
+import TabProgress from "@/pages/ticket/tabs/TabProgress.jsx";
+import TabLog from "@/pages/ticket/tabs/TabLog.jsx";
 
 // ===== Dummy store: ganti dengan fetch API sesuai backend Anda =====
 const TICKETS = [
@@ -47,7 +53,6 @@ const InfoRow = ({ label, value }) => (
 export default function TicketDetail() {
     const { no } = useParams();
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState("ringkasan");
     const [ticket, setTicket] = useState(null);
 
     // Ambil data (dummy). Ganti dengan fetch API.
@@ -103,77 +108,39 @@ export default function TicketDetail() {
 
                 {/* Tabs */}
                 <div className="rounded-lg bg-white dark:bg-gray-800 p-0 ring-1 ring-gray-100 overflow-hidden">
-                    <div className="flex border-b px-4">
-                        {[
-                            { key: "ringkasan", label: "Ringkasan" },
-                            { key: "diskusi", label: "Diskusi" },
-                            { key: "file", label: "File" },
-                            { key: "progress", label: "Progress Tiket" },
-                            { key: "log", label: "Log Aktivitas" },
-                        ].map((tab) => (
-                            <button
-                                key={tab.key}
-                                onClick={() => setActiveTab(tab.key)}
-                                className={`px-4 py-3 text-sm border-b-2 -mb-px ${
-                                    activeTab === tab.key
-                                        ? "border-blue-600 text-blue-600"
-                                        : "border-transparent text-gray-600 hover:text-blue-600"
-                                }`}
-                            >
-                                {tab.label}
-                            </button>
-                        ))}
-                    </div>
-
-                    {/* Body: dua kolom */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4">
-                        {/* Kiri (2 kolom) */}
                         <div className="lg:col-span-2 space-y-4">
-                            {/* Seksi: Informasi Ticket */}
                             <div className="rounded border bg-white dark:bg-gray-800">
-                                <div className="border-b px-4 py-3 font-semibold">Informasi Tiket</div>
-
-                                {/* Tab dalam: Detail Tiket / Tiket Kategori (dummy) */}
-                                <div className="px-4 pt-3">
-                                    <div className="flex gap-6 border-b">
-                                        <button className="py-2 text-sm font-medium border-b-2 border-blue-600 text-blue-600">
-                                            Detail Tiket
-                                        </button>
-                                        <button className="py-2 text-sm text-gray-500 hover:text-blue-600">
-                                            Tiket Kategori
-                                        </button>
-                                    </div>
-                                </div>
-
-                                {/* Konten ringkasan */}
-                                <div className="p-4 space-y-4">
-                                    <div>
-                                        <h3 className="font-semibold">Rangkuman</h3>
-                                        <p className="text-sm text-gray-700 mt-1">
-                                            {ticket.ringkasanJudul}
-                                        </p>
-                                    </div>
-
-                                    <div className="rounded border p-4">
-                                        <div className="flex items-center gap-2 text-sm font-semibold text-green-600">
-                                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-green-100">i</span>
-                                            Catatan dari User
-                                        </div>
-                                        <pre className="whitespace-pre-wrap text-sm mt-3 text-gray-800">
-{ticket.ringkasanIsi}
-                    </pre>
-                                    </div>
-
-                                    <div className="rounded border p-4">
-                                        <div className="flex items-center gap-2 text-sm font-semibold text-emerald-600">
-                                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-100">i</span>
-                                            Catatan dari SuperUser
-                                        </div>
-                                        <p className="text-sm mt-3 text-gray-800">
-                                            {ticket.catatanSU || "—"}
-                                        </p>
-                                    </div>
-                                </div>
+                                <Tabs
+                                    defaultKey="ringkasan"
+                                    items={[
+                                        {
+                                            key: "ringkasan",
+                                            label: "Ringkasan",
+                                            content: <TabRingkasan ticket={ticket} />,
+                                        },
+                                        {
+                                            key: "diskusi",
+                                            label: "Diskusi",
+                                            content: <TabDiskusi ticketNo={ticket.no} />,
+                                        },
+                                        {
+                                            key: "file",
+                                            label: "File",
+                                            content: <TabFile ticketNo={ticket.no} />,
+                                        },
+                                        {
+                                            key: "progress",
+                                            label: "Progress Tiket",
+                                            content: <TabProgress />,
+                                        },
+                                        {
+                                            key: "log",
+                                            label: "Log Aktivitas",
+                                            content: <TabLog />,
+                                        },
+                                    ]}
+                                />
                             </div>
                         </div>
 

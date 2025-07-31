@@ -61,7 +61,6 @@ const dataTiket = [
     },
 ];
 
-// ======== Modal View sederhana ========
 function ViewTicketModal({ isOpen, onClose}) {
     if (!isOpen) return null;
 
@@ -140,7 +139,7 @@ export default function Ticket() {
                 <button className="bg-orange-500 text-white px-4 py-2 rounded">Excel</button>
             </div>
 
-            <div className="w-full overflow-x-auto rounded shadow">
+            <div className="w-full overflow-x-auto p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
                     <table className="min-w-[900px] border border-gray-200 text-sm">
                         <thead className="bg-gray-100 text-gray-700">
                         <tr>

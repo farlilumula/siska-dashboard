@@ -91,7 +91,7 @@ const Login = () => {
                                             type="text"
                                             value={username}
                                             onChange={(e) => setEmail(e.target.value)}
-                                            className="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+                                            className="w-full mt-1 px-3 py-2 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring focus:ring-blue-300"
                                             required
                                         />
                                     </div>
@@ -104,7 +104,7 @@ const Login = () => {
                                             type="password"
                                             value={password}
                                             onChange={(e) => setPassword(e.target.value)}
-                                            className="w-full mt-1 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
+                                            className="w-full mt-1 px-3 py-2 border border-gray-400 rounded shadow-xl focus:outline-none focus:ring focus:ring-blue-300"
                                             required
                                         />
                                     </div>
