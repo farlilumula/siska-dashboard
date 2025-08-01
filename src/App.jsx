@@ -13,6 +13,8 @@ import Login from "./pages/login/Login";
 import MainLayout from "@/layout/MainLayout.jsx";
 import PrivateRoute from "@/routes/PrivateRoute.jsx";
 import TicketDetail from "@/pages/ticket/TicketDetail.jsx";
+import UserList from "@/pages/usermanagement/UserList.jsx";
+import CreatePegawai from "./pages/usermanagement/CreatePegawai.jsx";
 
 function App() {
 
@@ -23,21 +25,23 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
             </Route>
             <Route element={
-                <PrivateRoute>
+                // <PrivateRoute>
                     <MainLayout/>
-                </PrivateRoute>
+                // </PrivateRoute>
             }>
                 <Route path="/Home" element={<Home/>}/>
                 <Route path="/Ticket" element={<Ticket/>}/>
                 <Route path="/ticket/CreateTicket" element={<CreateTicket/>}/>
                 <Route path="/ticket/Allticket" element={<Allticket/>}/>
                 <Route path="/tiket/detail/{id}" element={<Ticket/>}/>
-                <Route path="/ticket/:no" element={<TicketDetail />} />
+                <Route path="/ticket/:no" element={<TicketDetail/>}/>
                 <Route path="/Report" element={<Report/>}/>
                 <Route path="/Analytics" element={<Analytics/>}/>
                 <Route path="/ListPegawai" element={<ListPegawai/>}/>
                 <Route path="/AssetManagement" element={<AssetManagement/>}/>
                 <Route path="/ListAsset" element={<ListAsset/>}/>
+                <Route path="/UserList" element={<UserList/>}/>
+                <Route path="/CreatePegawai" element={<CreatePegawai/>}/>
                 <Route path="/Faqs" element={<Faqs/>}/>
             </Route>
         </Routes>

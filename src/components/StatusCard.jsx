@@ -21,7 +21,7 @@ const CardInfo = ({ title, value, icon, iconBg }) => (
 export default function StatusCard () {
     return (
         <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5 mb-5">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6 w-250">
                 <CardInfo
                     title="Total Tiket"
                     value="159"

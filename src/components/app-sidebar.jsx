@@ -25,6 +25,8 @@ import {
   Warehouse
 } from "lucide-react";
 import {DocumentTextIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline/index.js";
+import {LuAirplay, LuBellRing, LuPill} from "react-icons/lu";
+import {RiTelegramLine} from "react-icons/ri";
 
 export function AppSidebar({
   ...props
@@ -80,6 +82,26 @@ export function AppSidebar({
         icon: Warehouse,
       },
       {
+        title: "Data Satu Sehat",
+        url: "/SatuSehat",
+        icon: LuPill,
+      },
+      {
+        title: "Notifikasi",
+        url: "/Notifications",
+        icon: LuBellRing,
+      },
+      {
+        title: "Master Data",
+        url: "/MasterData",
+        icon: LuAirplay,
+      },
+      {
+        title: "Telegram",
+        url: "/TelegramBot",
+        icon: RiTelegramLine,
+      },
+      {
         title: "Assets",
         url: "/AssetManagement",
         icon: Warehouse,
@@ -95,6 +117,20 @@ export function AppSidebar({
         title: "Settings",
         url: "#",
         icon: Cog,
+        items: [
+          {
+            title: "List User",
+            icon: FileCheck,
+            url: "/UserList",
+          },
+          {
+            title: "Group Management",
+            url: "/GroupManagement",
+          },{
+            title: "Menu Management",
+            url: "/MenuManagement",
+          }
+        ]
       },
       {
         title: "Get Help",

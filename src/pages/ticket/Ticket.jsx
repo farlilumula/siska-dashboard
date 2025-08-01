@@ -119,7 +119,7 @@ export default function Ticket() {
     };
 
     return (
-        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
+        <div className="p-6">
             <div className="flex justify-between items-center">
                 <h2 className="text-2xl mb-4">List Tiket</h2>
                 <Link
