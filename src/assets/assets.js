@@ -4,6 +4,7 @@ import loginBg from './login-bg.png';
 import logoBumn from './logo-bumn.png';
 import logoKfa from './logo-kimiafarma.png';
 import siskaMain from './siska-main.png';
+import faq from './faq-img.png'
 
 export const assets = {
     logo,
@@ -11,5 +12,6 @@ export const assets = {
     loginBg,
     logoKfa,
     logoBumn,
-    siskaMain
+    siskaMain,
+    faq
 }

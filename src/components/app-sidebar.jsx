@@ -25,7 +25,7 @@ import {
   Warehouse
 } from "lucide-react";
 import {DocumentTextIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline/index.js";
-import {LuAirplay, LuBellRing, LuPill} from "react-icons/lu";
+import {LuAirplay, LuBellRing, LuListTodo, LuPill, LuSquareM, LuTicket, LuUserCog, LuWorkflow} from "react-icons/lu";
 import {RiTelegramLine} from "react-icons/ri";
 
 export function AppSidebar({
@@ -67,12 +67,13 @@ export function AppSidebar({
         items: [
           {
             title: "Laporan Tiket",
-            icon: FileCheck,
+            icon: LuTicket,
             url: "/Report",
           },
           {
             title: "Analitik",
             url: "/Analytics",
+            icon: LuWorkflow,
           }
         ]
       },
@@ -115,20 +116,21 @@ export function AppSidebar({
     navSecondary: [
       {
         title: "Settings",
-        url: "#",
         icon: Cog,
         items: [
           {
             title: "List User",
-            icon: FileCheck,
             url: "/UserList",
+            icon: LuListTodo,
           },
           {
             title: "Group Management",
             url: "/GroupManagement",
+            icon: LuUserCog,
           },{
             title: "Menu Management",
             url: "/MenuManagement",
+            icon: LuSquareM,
           }
         ]
       },

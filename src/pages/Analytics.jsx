@@ -1,5 +1,12 @@
+// src/components/HeroSection.jsx
+import React from "react";
 
 const Analytics = () => {
-    return <div className="p-8 text-2xl">Analytics</div>;
+    return (
+        <div>
+            <h1>Analytics</h1>
+        </div>
+    );
 };
+
 export default Analytics;

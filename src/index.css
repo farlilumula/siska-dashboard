@@ -216,3 +216,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --before: var()
+  }
+
+.banner:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100%;
+  background: #37d72f;
+  transform-origin: top;
+  transform: skewY(-20deg);
+  z-index: -1;
+
+}

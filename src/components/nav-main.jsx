@@ -134,7 +134,11 @@ export function NavMain({ items = [] }) {
                                                     isActive(sub.url) && "bg-accent/60 text-accent-foreground"
                                                 )}
                                             >
-                                                <Link to={sub.url}>{sub.title}</Link>
+                                                <Link
+                                                    to={sub.url}>
+                                                    {sub.icon && <sub.icon className="w-5 h-5 shrink-0" />}
+                                                    {sub.title}
+                                                </Link>
                                             </DropdownMenuItem>
                                         ))}
                                     </DropdownMenuContent>
