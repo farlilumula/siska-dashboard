@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Link} from "react-router-dom";
 
 export default function FormInsertUser() {
     const [formData, setFormData] = useState({
@@ -175,12 +176,12 @@ export default function FormInsertUser() {
 
             {/* Footer Buttons */}
             <div className="flex justify-end gap-2 px-4 pb-4 mt-5">
-                <button
-                    type="button"
+                <Link
+                    to="/UserList"
                     className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded"
                 >
                     Close
-                </button>
+                </Link>
                 <button
                     type="submit"
                     onClick={handleSubmit}

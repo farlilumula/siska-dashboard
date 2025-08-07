@@ -76,10 +76,10 @@ export function NavMain({ items = [] }) {
                                         tooltip={item.title}
                                         className={cn(
                                             "justify-start",
-                                            isActive(item.url) && "bg-accent text-accent-foreground"
+                                            isActive(item.path) && "bg-accent text-accent-foreground"
                                         )}
                                     >
-                                        <Link to={item.url} className="flex items-center gap-2 px-3 py-2">
+                                        <Link to={item.path} className="flex items-center gap-2 px-3 py-2">
                                             {item.icon && <item.icon className="w-5 h-5 shrink-0" />}
                                             <span>{item.title}</span>
                                         </Link>
@@ -89,7 +89,7 @@ export function NavMain({ items = [] }) {
                         }
 
                         // Item dengan submenu → DropdownMenu
-                        const opened = isActive(item.url) || isAnyChildActive(item.items);
+                        const opened = isActive(item.path) || isAnyChildActive(item.items);
 
                         return (
                             <SidebarMenuItem key={item.title}>
@@ -131,11 +131,11 @@ export function NavMain({ items = [] }) {
                                                 asChild
                                                 className={cn(
                                                     "cursor-pointer",
-                                                    isActive(sub.url) && "bg-accent/60 text-accent-foreground"
+                                                    isActive(sub.path) && "bg-accent/60 text-accent-foreground"
                                                 )}
                                             >
                                                 <Link
-                                                    to={sub.url}>
+                                                    to={sub.path}>
                                                     {sub.icon && <sub.icon className="w-5 h-5 shrink-0" />}
                                                     {sub.title}
                                                 </Link>

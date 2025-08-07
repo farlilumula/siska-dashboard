@@ -88,7 +88,7 @@ export default function TicketDetail() {
     }
 
     return (
-        <div className="p-6">
+        <div className="p-6 bg-white dark:bg-gray-800 rounded-lg px-6 py-8 ring shadow-xl ring-gray-900/5">
             <div className="max-w-6xl mx-auto space-y-4">
                 {/* Header bar */}
                 <div className="rounded-lg bg-blue-900 text-white p-4 flex items-center justify-between">

@@ -14,19 +14,7 @@ import {
 import {useContext} from "react";
 import {AppContext} from "@/context/app-context";
 import {assets} from "@/assets/assets";
-import {
-  Binoculars,
-  Cog,
-  CreditCard,
-  FileCheck,
-  LayoutDashboard,
-  MessageCircleQuestionMark,
-  TriangleAlert,
-  Warehouse
-} from "lucide-react";
-import {DocumentTextIcon, ExclamationCircleIcon} from "@heroicons/react/24/outline/index.js";
-import {LuAirplay, LuBellRing, LuListTodo, LuPill, LuSquareM, LuTicket, LuUserCog, LuWorkflow} from "react-icons/lu";
-import {RiTelegramLine} from "react-icons/ri";
+import { navMain, navSecondary } from "@/routes/MenuRoutes";
 
 export function AppSidebar({
   ...props
@@ -39,112 +27,6 @@ export function AppSidebar({
       email: user?.email ? user?.email : "user@siska.com",
       avatar: "/avatars/shadcn.jpg",
     },
-    navMain: [
-      {
-        title: "Dashboard",
-        url: "/Home",
-        icon: LayoutDashboard,
-      },
-      {
-        title: "Tickets",
-        url: "/Ticket",
-        icon: CreditCard,
-        items: [
-          {
-            title: "Proses Tiket",
-            url: "/Ticket",
-          },
-          {
-            title: "All Ticket",
-            url: "/ticket/Allticket",
-          }
-        ]
-      },
-      {
-        title: "Laporan",
-        url: "/Report",
-        icon: FileCheck,
-        items: [
-          {
-            title: "Laporan Tiket",
-            icon: LuTicket,
-            url: "/Report",
-          },
-          {
-            title: "Analitik",
-            url: "/Analytics",
-            icon: LuWorkflow,
-          }
-        ]
-      },
-      {
-        title: "Master Pegawai",
-        url: "/ListPegawai",
-        icon: Warehouse,
-      },
-      {
-        title: "Data Satu Sehat",
-        url: "/SatuSehat",
-        icon: LuPill,
-      },
-      {
-        title: "Notifikasi",
-        url: "/Notifications",
-        icon: LuBellRing,
-      },
-      {
-        title: "Master Data",
-        url: "/MasterData",
-        icon: LuAirplay,
-      },
-      {
-        title: "Telegram",
-        url: "/TelegramBot",
-        icon: RiTelegramLine,
-      },
-      {
-        title: "Assets",
-        url: "/AssetManagement",
-        icon: Warehouse,
-      },
-      {
-        title: "FAQs",
-        url: "/Faqs",
-        icon: TriangleAlert,
-      }
-    ],
-    navSecondary: [
-      {
-        title: "Settings",
-        icon: Cog,
-        items: [
-          {
-            title: "List User",
-            url: "/UserList",
-            icon: LuListTodo,
-          },
-          {
-            title: "Group Management",
-            url: "/GroupManagement",
-            icon: LuUserCog,
-          },{
-            title: "Menu Management",
-            url: "/MenuManagement",
-            icon: LuSquareM,
-          }
-        ]
-      },
-      {
-        title: "Get Help",
-        url: "#",
-        icon: MessageCircleQuestionMark,
-      },
-      {
-        title: "Search",
-        url: "#",
-        icon: Binoculars,
-      },
-    ],
   }
 
   return (
@@ -163,8 +45,8 @@ export function AppSidebar({
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavMain items={navMain} />
+        <NavSecondary items={navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
